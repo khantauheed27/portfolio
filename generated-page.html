@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tauheed - Portfolio</title>
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarpanch:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Styles -->
+  <style>
+    body { font-family: 'Inter', sans-serif }
+    ::-webkit-scrollbar { width: 6px; height: 6px }
+    ::-webkit-scrollbar-track { background: transparent }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.35) }
+    .glass {
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      backdrop-filter: blur(32px) saturate(180%);
+      -webkit-backdrop-filter: blur(32px) saturate(180%);
+      border: 1.5px solid rgba(255,255,255,0.35);
+      box-shadow: 0 4px 24px 0 rgba(31,38,135,0.08);
+      /* Simulate refraction with a subtle inner border */
+      position: relative;
+      overflow: hidden;
+    }
+    .glass::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: linear-gradient(120deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.05) 100%);
+      opacity: 0.5;
+      mix-blend-mode: lighten;
+    }
+    .glass:hover {
+      border-color: rgba(255,255,255,0.35);
+      /* Removed box-shadow on hover for a cleaner look */
+      box-shadow: 0 4px 24px 0 rgba(31,38,135,0.08);
+    }
+    .ambient::before, .ambient::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .35;
+      pointer-events: none;
+      animation: float 24s ease-in-out infinite;
+    }
+    .ambient::before {
+      top: 10%; left: 20%; width: 400px; height: 400px;
+      background: radial-gradient(circle at center,rgba(99,102,241,.35)0%,transparent 70%);
+      animation-delay: -8s;
+    }
+    .ambient::after {
+      bottom: 18%; right: 15%; width: 350px; height: 350px;
+      background: radial-gradient(circle at center,rgba(236,72,153,.28)0%,transparent 70%);
+      animation-delay: -14s;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0) }
+      50% { transform: translateY(-40px) }
+    }
+    .font-poppins { font-family: 'Poppins', sans-serif !important; }
+    .font-playfair { font-family: 'Playfair Display', serif !important; }
+    .michroma-regular {
+      font-family: "Michroma", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+    .sarpanch-regular {
+      font-family: "Sarpanch", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+    .sarpanch-medium {
+      font-family: "Sarpanch", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+    }
+    .sarpanch-semibold {
+      font-family: "Sarpanch", sans-serif;
+      font-weight: 600;
+      font-style: normal;
+    }
+    .sarpanch-bold {
+      font-family: "Sarpanch", sans-serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+    .sarpanch-extrabold {
+      font-family: "Sarpanch", sans-serif;
+      font-weight: 800;
+      font-style: normal;
+    }
+    .sarpanch-black {
+      font-family: "Sarpanch", sans-serif;
+      font-weight: 900;
+      font-style: normal;
+    }
+    /* Add this to your CSS for all anchor sections */
+    section {
+      scroll-margin-top: 80px; /* Adjust to your header height */
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br min-h-screen overflow-x-hidden relative from-gray-100 via-slate-100 to-gray-200 text-black">
+
+  <!-- Spline background -->
+  <div class="spline-container fixed top-0 w-full h-screen -z-10">
+    <iframe src="https://my.spline.design/flowingribbon-TlkEaNrvCCNZuJBNJN3LXpRF" frameborder="0" width="100%" height="100%"></iframe>
+  </div>
+  <div class="ambient fixed inset-0 -z-10"></div>
+
+  <!-- Navigation -->
+  <!-- Navbar -->
+<header class="fixed top-4 inset-x-0 mx-auto max-w-6xl px-6 z-50">
+  <nav class="glass flex rounded-full pt-3 pr-6 pb-3 pl-6 items-center justify-between relative z-50 shadow-lg">
+    <a href="#" class="text-lg font-semibold michroma-regular text-blue-700">TK</a>
+    <!-- Desktop Nav -->
+      <ul class="hidden md:flex gap-4 text-sm font-medium">
+        <li>
+          <a href="#about" class="michroma-regular text-blue-700 bg-white/90 px-4 py-2 rounded-full transition select-none cursor-pointer hover:bg-blue-600 hover:text-white border border-blue-200 shadow-sm">
+            About
+          </a>
+        </li>
+        <li>
+          <a href="#work" class="michroma-regular text-blue-700 bg-white/90 px-4 py-2 rounded-full transition select-none cursor-pointer hover:bg-blue-600 hover:text-white border border-blue-200 shadow-sm">
+            Work
+          </a>
+        </li>
+        <li>
+          <a href="#skills" class="michroma-regular text-blue-700 bg-white/90 px-4 py-2 rounded-full transition select-none cursor-pointer hover:bg-blue-600 hover:text-white border border-blue-200 shadow-sm">
+            Skills
+          </a>
+        </li>
+        <li>
+          <a href="#education" class="michroma-regular text-blue-700 bg-white/90 px-4 py-2 rounded-full transition select-none cursor-pointer hover:bg-blue-600 hover:text-white border border-blue-200 shadow-sm">
+            Education
+          </a>
+        </li>
+        <li>
+          <a href="#certifications" class="michroma-regular text-blue-700 bg-white/90 px-4 py-2 rounded-full transition select-none cursor-pointer hover:bg-blue-600 hover:text-white border border-blue-200 shadow-sm">
+            Certifications
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="michroma-regular text-blue-700 bg-white/90 px-4 py-2 rounded-full transition select-none cursor-pointer hover:bg-blue-600 hover:text-white border border-blue-200 shadow-sm">
+            Contact
+          </a>
+        </li>
+      </ul>
+    <!-- Hamburger Button -->
+    <button id="mobile-nav-toggle" class="md:hidden p-2 rounded-lg hover:bg-blue-800">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu" class="lucide lucide-menu w-5 h-5 text-blue-700"><path d="M4 12h16"></path><path d="M4 18h16"></path><path d="M4 6h16"></path></svg>
+    </button>
+    <!-- Mobile Nav -->
+    <div id="mobile-nav" class="absolute top-16 right-0 w-48 bg-white rounded-2xl shadow-lg py-6 px-6 flex flex-col gap-4 text-sm font-medium michroma-regular z-50 transition-all duration-200 opacity-0 pointer-events-none md:hidden">
+      <a href="#about" class="text-blue-700 bg-white/90 px-4 py-2 rounded-full transition select-none cursor-pointer hover:bg-blue-600 hover:text-white border border-blue-200 shadow-sm">About</a>
+      <a href="#work" class="text-blue-700 bg-white/90 px-4 py-2 rounded-full transition select-none cursor-pointer hover:bg-blue-600 hover:text-white border border-blue-200 shadow-sm">Work</a>
+      <a href="#skills" class="text-blue-700 bg-white/90 px-4 py-2 rounded-full transition select-none cursor-pointer hover:bg-blue-600 hover:text-white border border-blue-200 shadow-sm">Skills</a>
+      <a href="#education" class="text-blue-700 bg-white/90 px-4 py-2 rounded-full transition select-none cursor-pointer hover:bg-blue-600 hover:text-white border border-blue-200 shadow-sm">Education</a>
+      <a href="#certifications" class="text-blue-700 bg-white/90 px-4 py-2 rounded-full transition select-none cursor-pointer hover:bg-blue-600 hover:text-white border border-blue-200 shadow-sm">Certifications</a>
+      <a href="#contact" class="text-blue-700 bg-white/90 px-4 py-2 rounded-full transition select-none cursor-pointer hover:bg-blue-600 hover:text-white border border-blue-200 shadow-sm">Contact</a>
+    </div>
+  </nav>
+</header>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative min-h-screen flex flex-col justify-center items-center px-6 pt-24">
+
+    <!-- Hero Content -->
+      <div class="relative z-10 flex flex-col items-center text-center">
+        <div class="w-full max-w-xl md:max-w-2xl lg:max-w-3xl text-left mb-2">
+          <span class="sarpanch-bold text-blue-700 text-xl md:text-2xl">👋 Hey, I'm</span>
+        </div>
+        <h1 class="md:text-6xl text-5xl font-medium tracking-tight michroma-regular mb-2">Tauheed Abdullah Khan</h1>
+        <div class="sarpanch-bold text-xl md:text-2xl text-blue-700 mb-6">तौहीद अब्दुल्ला खान</div>
+        <div class="glass rounded-3xl px-6 py-6 md:px-12 md:py-10 mb-10 w-full max-w-xl md:max-w-2xl lg:max-w-3xl">
+          <p class="text-xl text-gray-700 michroma-regular text-center m-0">
+            Artificial Intelligence & Data Science Engineer passionate about crafting innovative, user-focused solutions. I build intelligent systems that elevate experiences and drive measurable success.
+          </p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 w-full max-w-xl md:max-w-2xl lg:max-w-3xl">
+          <a href="/resume.pdf" download class="bg-blue-700 px-6 py-3 rounded-xl font-medium hover:scale-105 transition shadow-lg michroma-regular text-white text-base text-center">
+            Resume
+          </a>
+          <a href="#contact" class="bg-blue-700 px-6 py-3 rounded-xl font-medium hover:scale-105 transition shadow-lg michroma-regular text-white text-base text-center">
+            Let's Connect
+          </a>
+        </div>
+      </div>
+  </section>
+
+  <!-- About Section -->
+<section id="about" class="max-w-6xl mx-auto p-24">
+    <div class="md:flex md:items-center md:gap-12 grid grid-cols-1 gap-y-10">
+      <img src="portfolio3/src/Tauheed_silhuoette.jpg"
+           alt="portrait"
+           class="w-full max-w-xs md:max-w-sm h-72 md:h-96 glass object-cover rounded-3xl mx-auto md:mx-0">
+<div class="glass p-10 rounded-3xl w-full max-w-xl md:ml-auto md:mx-0 flex flex-col justify-center">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-3xl tracking-tight font-medium michroma-regular">About Me</h2>
+          <span class="sarpanch-bold text-blue-700 text-xl">मेरे बारे में</span>
+        </div>
+        <p class="leading-relaxed text-gray-700 michroma-regular m-0">
+         Hey, I’m Tauheed — a B.Tech AI & Data Science student from MIT Chh. Sambhajinagar currently diving deep into real-world tech projects and experimenting with ideas that solve actual problems.
+I was also a core member of GDG on Campus at MIT Chh. Sambhajinagar, where I contribute to digital design, content, and team strategy.
+When I’m not building apps or training models, you’ll find me exploring tech news, designing interfaces, or chasing side quests like organizing MUN conferences and brainstorming startup ideas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="max-w-6xl mx-auto px-6 py-24">
+    <div class="flex justify-between items-center mb-12">
+      <h2 class="text-3xl tracking-tight font-medium michroma-regular">Certifications</h2>
+      <span class="sarpanch-bold text-blue-700 text-xl">प्रमाणपत्र</span>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <a href="/portfolio3/src/ISROcertificate.pdf" target="_blank" class="glass rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition min-h-[180px]">
+        <div>
+          <h3 class="mt-4 text-xl font-medium michroma-regular">AI/ML for Geodata Analysis</h3>
+          <span class="text-sm bg-blue-500/20 px-3 py-1 rounded-full text-blue-700 font-poppins mt-2 inline-block">AI</span>
+          <span class="text-sm bg-blue-500/20 px-3 py-1 rounded-full text-blue-700 font-poppins mt-2 inline-block">ML</span>
+          <p class="mt-2 text-sm text-gray-700 font-poppins">ISRO-LMS</p>
+        </div>
+      </a>
+      <a href="/portfolio3/src/springboardPromptEnggCertificate.pdf" target="_blank" class="glass rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition min-h-[180px]">
+        <div>
+          <h3 class="mt-4 text-xl font-medium michroma-regular">Prompt Engineering</h3>
+          <span class="text-sm bg-green-500/20 px-3 py-1 rounded-full text-green-700 font-poppins mt-2 inline-block">AI</span>
+          <p class="mt-2 text-sm text-gray-700 font-poppins">Infosys Springboard</p>
+        </div>
+      </a>
+      <a href="portfolio3/src/Tauheed_Khan_TCSion_CE.pdf" target="_blank" class="glass rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition min-h-[180px]">
+        <div>
+          <h3 class="mt-4 text-xl font-medium michroma-regular">TCS iON Career Edge - Young Professional</h3>
+          <span class="text-sm bg-yellow-500/20 px-3 py-1 rounded-full text-yellow-700 font-poppins mt-2 inline-block">Communication Skills</span>
+          <span class="text-sm bg-yellow-500/20 px-3 py-1 rounded-full text-yellow-700 font-poppins mt-2 inline-block">Soft Skills</span>
+          <p class="mt-2 text-sm text-gray-700 font-poppins">TCS iON</p>
+        </div>
+      </a>
+      <a href="https://coursera.org/verify/KAMPY9UXE235" target="_blank" class="glass rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition min-h-[180px]">
+        <div>
+          <h3 class="mt-4 text-xl font-medium michroma-regular">Introduction to User Experience Design</h3>
+          <span class="text-sm bg-pink-500/20 px-3 py-1 rounded-full text-pink-700 font-poppins mt-2 inline-block">UI UX</span>
+          <span class="text-sm bg-pink-500/20 px-3 py-1 rounded-full text-pink-700 font-poppins mt-2 inline-block">Design</span>
+          <p class="mt-2 text-sm text-gray-700 font-poppins">Georgia Institute of Technology, Coursera</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="max-w-6xl mx-auto px-6 py-24">
+    <div class="flex justify-between items-center mb-12">
+      <h2 class="text-3xl tracking-tight font-medium michroma-regular">Education</h2>
+      <span class="sarpanch-bold text-blue-700 text-xl">शिक्षा</span>
+    </div>
+    <ul class="flex flex-col gap-6">
+      <li class="glass rounded-2xl p-6 flex flex-col md:flex-row md:items-center md:justify-between">
+        <div>
+          <h3 class="text-xl font-medium michroma-regular">Bachelor in Technology (B.Tech), AI &amp; Data Science</h3>
+          <p class="text-gray-700 font-poppins mt-2">Maharashtra Institute of Technology, Chh. Sambhajinagar, MH, India</p>
+        </div>
+        <div class="flex gap-3 mt-4 md:mt-0">
+          <span class="text-sm bg-blue-500/20 px-3 py-1 rounded-full text-blue-700 michroma-regular select-none cursor-default">
+            2022 – 2026
+          </span>
+          <span class="text-sm bg-blue-500/20 px-3 py-1 rounded-full text-blue-700 michroma-regular select-none cursor-default">
+            CGPA: 8.5/10
+          </span>
+        </div>
+      </li>
+      <li class="glass rounded-2xl p-6 flex flex-col md:flex-row md:items-center md:justify-between">
+        <div>
+          <h3 class="text-xl font-medium michroma-regular">Honors, Cloud Computing</h3>
+          <p class="text-gray-700 font-poppins mt-2">Maharashtra Institute of Technology, Chh. Sambhajinagar, MH, India</p>
+        </div>
+        <div class="flex gap-3 mt-4 md:mt-0">
+          <span class="text-sm bg-blue-500/20 px-3 py-1 rounded-full text-blue-700 michroma-regular select-none cursor-default">
+            2023 – 2026
+          </span>
+          <span class="text-sm bg-blue-500/20 px-3 py-1 rounded-full text-blue-700 michroma-regular select-none cursor-default">
+            N/A
+          </span>
+        </div>
+      </li>
+      <!-- Add more education items as needed -->
+    </ul>
+  </section>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="fixed bottom-8 right-8 z-50 bg-white glass rounded-full shadow-lg p-3 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all border border-blue-200 group">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 transition-transform group-hover:-translate-y-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <!-- Portfolio Section -->
+  <section id="work" class="max-w-6xl mr-auto ml-auto pt-24 pr-6 pb-24 pl-6">
+    <div class="flex justify-between items-center mb-12">
+      <h2 class="text-3xl tracking-tight font-medium michroma-regular">Selected Work</h2>
+      <span class="sarpanch-bold text-blue-700 text-xl">चयनित कार्य</span>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-6 auto-rows-[220px] gap-6" style="grid-auto-flow: dense;">
+      <!-- Row 1: 3 + 3 -->
+      <a href="#" class="col-span-1 sm:col-span-3 sm:row-span-2 glass rounded-3xl p-8 flex flex-col justify-between hover:scale-105 transition">
+        <div>
+          <span class="text-sm bg-green-500/20 px-3 py-1 rounded-full text-green-700 font-poppins">Case Study</span>
+          <h3 class="mt-4 text-2xl font-medium michroma-regular">Zenith Mobile App</h3>
+          <p class="mt-2 text-sm text-gray-700 font-poppins">iOS / Android product design &amp; prototype.</p>
+        </div>
+        <div class="flex gap-3 mt-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="smartphone" class="lucide lucide-smartphone w-6 h-6 text-blue-700"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="figma" class="lucide lucide-figma w-6 h-6 text-pink-700"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"></path><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"></path><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"></path><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"></path><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"></path></svg>
+        </div>
+      </a>
+      <a href="#" class="col-span-1 sm:col-span-3 sm:row-span-2 glass rounded-3xl p-8 flex flex-col justify-between hover:scale-105 transition">
+        <div>
+          <span class="text-sm bg-green-500/20 px-3 py-1 rounded-full text-green-700 font-poppins">Case Study</span>
+          <h3 class="mt-4 text-2xl font-medium michroma-regular">Horizon Dashboard</h3>
+          <p class="mt-2 text-sm text-gray-700 font-poppins">Data visualization &amp; analytics dashboard.</p>
+        </div>
+        <div class="flex gap-3 mt-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="smartphone" class="lucide lucide-smartphone w-6 h-6 text-blue-700"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="figma" class="lucide lucide-figma w-6 h-6 text-pink-700"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"></path><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"></path><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"></path><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"></path><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"></path></svg>
+        </div>
+      </a>
+      <!-- Row 2: 2 + 2 + 2 -->
+      <a href="#" class="col-span-1 sm:col-span-2 glass rounded-3xl p-6 hover:scale-105 transition flex flex-col justify-between">
+        <h4 class="text-lg font-semibold michroma-regular">Dashboard UI</h4>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="layout-dashboard" class="lucide lucide-layout-dashboard w-6 h-6 mt-auto text-purple-700"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg>
+      </a>
+      <a href="#" class="col-span-1 sm:col-span-2 glass rounded-3xl p-6 hover:scale-105 transition flex flex-col justify-between">
+        <h4 class="text-lg font-semibold michroma-regular">3D Exploration</h4>
+        <i data-lucide="cube" class="w-6 h-6 mt-auto text-pink-700"></i>
+      </a>
+      <a href="#" class="col-span-1 sm:col-span-2 glass rounded-3xl p-6 hover:scale-105 transition flex flex-col justify-between">
+        <h4 class="text-lg font-semibold michroma-regular">Branding Kit</h4>
+        <i data-lucide="package" class="w-6 h-6 mt-auto text-green-700"></i>
+      </a>
+      <!-- Row 3: 3 + 3 -->
+      <a href="#" class="col-span-1 sm:col-span-3 glass rounded-3xl p-8 flex flex-col justify-between hover:scale-105 transition">
+        <div>
+          <span class="text-sm bg-yellow-500/20 px-3 py-1 rounded-full text-yellow-700 font-poppins">Web</span>
+          <h3 class="mt-4 text-2xl font-medium michroma-regular">Quantum Web Portal</h3>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="globe" class="lucide lucide-globe w-7 h-7 mt-6 text-orange-700"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+      </a>
+      <a href="#" class="col-span-1 sm:col-span-3 glass rounded-3xl p-8 flex flex-col justify-between hover:scale-105 transition">
+        <div>
+          <span class="text-sm bg-yellow-500/20 px-3 py-1 rounded-full text-yellow-700 font-poppins">Web</span>
+          <h3 class="mt-4 text-2xl font-medium michroma-regular">Apollo Landing Page</h3>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="globe" class="lucide lucide-globe w-7 h-7 mt-6 text-orange-700"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="max-w-6xl mx-auto pt-24 pr-6 pb-24 pl-6">
+    <div class="flex justify-between items-center mb-12">
+      <h2 class="text-3xl tracking-tight font-medium michroma-regular">Skill Snapshot</h2>
+      <span class="sarpanch-bold text-blue-700 text-xl">कौशल स्नैपशॉट</span>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      <div class="glass p-4 rounded-2xl flex flex-col items-center text-center hover:scale-105 transition">
+        <i data-lucide="code" class="w-7 h-7 text-blue-700 mb-2"></i>
+        <span class="font-semibold font-poppins text-sm">HTML</span>
+      </div>
+      <div class="glass p-4 rounded-2xl flex flex-col items-center text-center hover:scale-105 transition">
+        <i data-lucide="code" class="w-7 h-7 text-green-700 mb-2"></i>
+        <span class="font-semibold font-poppins text-sm">CSS</span>
+      </div>
+      <div class="glass p-4 rounded-2xl flex flex-col items-center text-center hover:scale-105 transition">
+        <i data-lucide="code" class="w-7 h-7 text-indigo-700 mb-2"></i>
+        <span class="font-semibold font-poppins text-sm">Python</span>
+      </div>
+      <div class="glass p-4 rounded-2xl flex flex-col items-center text-center hover:scale-105 transition">
+        <i data-lucide="code" class="w-7 h-7 text-pink-700 mb-2"></i>
+        <span class="font-semibold font-poppins text-sm">R</span>
+      </div>
+      <div class="glass p-4 rounded-2xl flex flex-col items-center text-center hover:scale-105 transition">
+        <i data-lucide="layout-dashboard" class="w-7 h-7 text-purple-700 mb-2"></i>
+        <span class="font-semibold font-poppins text-sm">UI Design</span>
+      </div>
+      <div class="glass p-4 rounded-2xl flex flex-col items-center text-center hover:scale-105 transition">
+        <i data-lucide="database" class="w-7 h-7 text-green-700 mb-2"></i>
+        <span class="font-semibold font-poppins text-sm">SQL</span>
+      </div>
+      <div class="glass p-4 rounded-2xl flex flex-col items-center text-center hover:scale-105 transition">
+        <i data-lucide="bar-chart-2" class="w-7 h-7 text-yellow-500 mb-2"></i>
+        <span class="font-semibold font-poppins text-sm">Power BI</span>
+      </div>
+      <div class="glass p-4 rounded-2xl flex flex-col items-center text-center hover:scale-105 transition">
+        <i data-lucide="trending-up" class="w-7 h-7 text-blue-500 mb-2"></i>
+        <span class="font-semibold font-poppins text-sm">Data Analytics</span>
+      </div>
+      <div class="glass p-4 rounded-2xl flex flex-col items-center text-center hover:scale-105 transition">
+        <i data-lucide="cpu" class="w-7 h-7 text-gray-700 mb-2"></i>
+        <span class="font-semibold font-poppins text-sm">AI</span>
+      </div>
+      <div class="glass p-4 rounded-2xl flex flex-col items-center text-center hover:scale-105 transition">
+        <i data-lucide="cpu" class="w-7 h-7 text-pink-700 mb-2"></i>
+        <span class="font-semibold font-poppins text-sm">ML</span>
+      </div>
+      <div class="glass p-4 rounded-2xl flex flex-col items-center text-center hover:scale-105 transition">
+        <i data-lucide="layers" class="w-7 h-7 text-blue-500 mb-2"></i>
+        <span class="font-semibold font-poppins text-sm">Data Science</span>
+      </div>
+      <div class="glass p-4 rounded-2xl flex flex-col items-center text-center hover:scale-105 transition">
+        <i data-lucide="cloud" class="w-7 h-7 text-blue-700 mb-2"></i>
+        <span class="font-semibold font-poppins text-sm">Cloud</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="max-w-4xl mr-auto ml-auto pt-24 pr-6 pb-24 pl-6">
+    <div class="glass p-10 rounded-3xl">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-3xl tracking-tight font-medium michroma-regular">Get in Touch</h2>
+        <span class="sarpanch-bold text-blue-700 text-xl">संपर्क करें</span>
+      </div>
+      <!-- Social Icons Row: right aligned -->
+      <div class="flex gap-4 justify-end mb-8">
+        <a href="https://www.linkedin.com/in/tauheed-abdullah-khan/" target="_blank" rel="noopener" class="glass p-3 rounded-full hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center">
+          <i data-lucide="linkedin" class="w-6 h-6"></i>
+        </a>
+        <a href="https://github.com/khantauheed27" target="_blank" rel="noopener" class="glass p-3 rounded-full hover:bg-gray-800 hover:text-white transition-all flex items-center justify-center">
+          <i data-lucide="github" class="w-6 h-6"></i>
+        </a>
+        <a href="https://instagram.com/khantauheed85" target="_blank" rel="noopener" class="glass p-3 rounded-full hover:bg-pink-600 hover:text-white transition-all flex items-center justify-center">
+          <i data-lucide="instagram" class="w-6 h-6"></i>
+        </a>
+      </div>
+      <form class="grid md:grid-cols-2 gap-6" action="https://formsubmit.co/tauheedabdullahkhan@gmail.com" method="POST">
+        <input type="text" name="name" placeholder="Name" class="glass px-4 py-3 rounded-xl outline-none col-span-2 md:col-span-1" required>
+        <input type="email" name="email" placeholder="Email" class="glass px-4 py-3 rounded-xl outline-none col-span-2 md:col-span-1" required>
+        <textarea name="message" rows="5" placeholder="Message" class="glass px-4 py-3 rounded-xl outline-none col-span-2" required></textarea>
+        <button type="submit" class="bg-blue-700 px-6 py-3 rounded-xl font-medium col-span-2 hover:scale-105 transition shadow-lg michroma-regular text-white text-base">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 text-center text-sm text-gray-500 font-poppins">
+    © <span id="year" class="font-poppins">2025</span> Tauheed Abdullah Khan. All rights reserved.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      lucide.createIcons();
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Mobile nav toggle
+      const navToggle = document.getElementById('mobile-nav-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
+      if (navToggle && mobileNav) {
+        navToggle.addEventListener('click', () => {
+          mobileNav.classList.toggle('opacity-0');
+          mobileNav.classList.toggle('opacity-100');
+          mobileNav.classList.toggle('pointer-events-none');
+          mobileNav.classList.toggle('pointer-events-auto');
+        });
+
+        // Optional: Close mobile nav when a link is clicked
+        mobileNav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileNav.classList.add('opacity-0');
+            mobileNav.classList.remove('opacity-100');
+            mobileNav.classList.add('pointer-events-none');
+            mobileNav.classList.remove('pointer-events-auto');
+          });
+        });
+      }
+
+      
+    });
+  </script>
+
+  <!-- Back to Top Button functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const btn = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          btn.style.display = 'flex';
+        } else {
+          btn.style.display = 'none';
+        }
+      });
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      // Hide initially
+      btn.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
